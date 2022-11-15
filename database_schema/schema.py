@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, Boolean, F
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.ext.declarative import declarative_base
 
-# locate the config.py file
+# locate config.py
 import sys
 sys.path.insert(0, "..")
 
@@ -21,6 +21,11 @@ class Characteristic_Types(Base):
     uid = Column(Integer, nullable = False, unique = True, primary_key = True)
     name = Column(String(25), nullable = False)
     is_gdt = Column(Boolean, nullable = False)
+
+class Locations(Base):
+    __tablename__ = "locations"
+    uid = Column(String(25), nullable = False, unique = True, primary_key = True)
+    description = Column(String(100), nullable = False)
 
 class Gauges(Base):
     __tablename__ = "gauges"
