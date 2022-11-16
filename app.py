@@ -76,15 +76,17 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
         return { "status": "not_ok", "response": "Error within the Flask server or database query." }
     else:
         output = []
-        for name, nominal, usl, lsl, part_drawing, part_revision, part_item, unit_name, is_gdt, gauge, gauge_type in results:
+        for name, nominal, usl, lsl, part_drawing, part_revision, part_item, unit_name, characteristic_name, is_gdt, gauge, gauge_type in results:
             output.append({
                 "name": name,
+                "nominal": nominal,
                 "usl": usl,
                 "lsl": lsl,
                 "part_drawing": part_drawing,
                 "part_revision": part_revision,
                 "part_item": part_item,
                 "unit_name": unit_name,
+                "characteristic_name": characteristic_name,
                 "is_gdt": is_gdt,
                 "gauge": gauge,
                 "gauge_type": gauge_type
@@ -93,4 +95,4 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
 
 # run the flask server
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = True, port = 8000)
