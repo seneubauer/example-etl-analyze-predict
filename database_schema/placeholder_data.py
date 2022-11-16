@@ -19,75 +19,23 @@ base = automap_base()
 base.prepare(engine, reflect = True)
 
 # instantiate the database tables
+unit_types = base.classes.unit_types
 gauge_types = base.classes.gauge_types
 characteristic_types = base.classes.characteristic_types
+stations = base.classes.stations
+machines = base.classes.machines
+locations = base.classes.locations
 gauges = base.classes.gauges
 parts = base.classes.parts
 characteristics = base.classes.characteristics
 
-# define mock data for 'gauge_types'
-gauge_types_list = [
-    "Caliper",
-    "Bore Micrometer",
-    "Depth Gauge",
-    "Roughness Gauge"
-    "CMM",
-    "Vision System"
-]
-gauge_types_df = pd.DataFrame({
-    "uid": [i for i in range(len(gauge_types_list))],
-    "name": gauge_types_list
-})
-
-# define mock data for 'characteristic_types'
-characteristic_types_names = [
-    "form",
-    "distance",
-    "angle",
-    "diameter",
-    "radius",
-    "position",
-    "concentricity",
-    "coaxiality",
-    "circularity",
-    "cylindricity",
-    "straightness",
-    "flatness",
-    "perpendicularity",
-    "parallelism",
-    "total_runout",
-    "circular_runout",
-    "profile_surface",
-    "profile_line",
-    "angularity",
-    "symmetry",
-    "size"
-]
-characteristic_types_isgdt = [
-    False,
-    False,
-    False,
-    False,
-    False,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True,
-    True
-]
-characteristic_types_df = pd.DataFrame({
-    "uid": [i for i in range(len(characteristic_types_names))],
-    "name": characteristic_types_names,
-    "is_gdt": characteristic_types_isgdt
-})
+# read in the mock data
+unit_types_df = pd.read_csv("../resources/unit_types.csv")
+gauge_types_df = pd.read_csv("../resources/gauge_types.csv")
+characteristic_types_df = pd.read_csv("../resources/characteristic_types.csv")
+stations_df = pd.read_csv("../resources/stations.csv")
+machines_df = pd.read_csv("../resources/machines.csv")
+locations_df = pd.read_csv("../resources/locations.csv")
+gauges_df = pd.read_csv("../resources/gauges.csv")
+parts_df = pd.read_csv("../resources/parts.csv")
+characteristics_df = pd.read_csv("../resources/characteristics.csv")

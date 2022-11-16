@@ -1,0 +1,13 @@
+uid,pad,name
+0,1,NAK
+1,4,8N
+2,6,HAAS
+3,9,250
+4,10,REX
+5,13,350
+6,14,NTX
+7,15,NZX1
+8,16,NZX2
+9,17,NZX3
+10,,Spinner
+11,,HAAS DUO

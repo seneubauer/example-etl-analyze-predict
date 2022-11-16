@@ -11,6 +11,11 @@ sys.path.insert(0, "..")
 Base = declarative_base()
 
 # define tables
+class Unit_Types(Base):
+    __tablename__ = "unit_types"
+    uid = Column(Integer, nullable = False, unique = True, primary_key = True)
+    name = Column(String(10), nullable = False)
+
 class Gauge_Types(Base):
     __tablename__ = "gauge_types"
     uid = Column(Integer, nullable = False, unique = True, primary_key = True)
@@ -22,15 +27,27 @@ class Characteristic_Types(Base):
     name = Column(String(25), nullable = False)
     is_gdt = Column(Boolean, nullable = False)
 
+class Stations(Base):
+    __tablename__ = "stations"
+    uid = Column(Integer, nullable = False, unique = True, primary_key = True)
+    name = Column(String(25), nullable = False)
+
+class Machines(Base):
+    __tablename__ = "machines"
+    uid = Column(Integer, nullable = False, unique = True, primary_key = True)
+    pad = Column(String(10), nullable = True)
+    name = Column(String(25), nullable = False)
+
 class Locations(Base):
     __tablename__ = "locations"
-    uid = Column(String(25), nullable = False, unique = True, primary_key = True)
-    description = Column(String(100), nullable = False)
+    uid = Column(Integer, nullable = False, unique = True, primary_key = True)
+    station_uid = Column(Integer, ForeignKey("stations.uid"), nullable = False)
+    machine_uid = Column(Integer, ForeignKey("machines.uid"), nullable = True)
 
 class Gauges(Base):
     __tablename__ = "gauges"
     uid = Column(String(25), nullable = False, unique = True, primary_key = True)
-    location = Column(String(25), nullable = False)
+    location_uid = Column(Integer, ForeignKey("locations.uid"), nullable = False)
     type_uid = Column(Integer, ForeignKey("gauge_types.uid"), nullable = False)
 
 class Parts(Base):
@@ -52,6 +69,7 @@ class Characteristics(Base):
     part_drawing = Column(String(25), nullable = False)
     part_revision = Column(String(5), nullable = False)
     part_item = Column(String(25), nullable = False)
+    unit_type = Column(Integer, ForeignKey("unit_types.uid"), nullable = False)
     type_uid = Column(Integer, ForeignKey("characteristic_types.uid"), nullable = False)
     gauge_uid = Column(String(25), ForeignKey("gauges.uid"), nullable = False)
     __tableargs__ = (
