@@ -60,7 +60,7 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
 
     # query the database
     result = session.query(*features)\
-        .join(unit_types, (characteristics.unit_type == unit_types.uid))\
+        .join(unit_types, (characteristics.unit_type_uid == unit_types.uid))\
         .join(characteristic_types, (characteristics.type_uid == characteristic_types.uid))\
         .join(gauges, (characteristics.gauge_uid == gauges.uid))\
         .join(gauge_types, (gauges.type_uid == gauge_types.uid))\
