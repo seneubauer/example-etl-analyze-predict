@@ -39,3 +39,40 @@ locations_df = pd.read_csv("../resources/locations.csv")
 gauges_df = pd.read_csv("../resources/gauges.csv")
 parts_df = pd.read_csv("../resources/parts.csv")
 characteristics_df = pd.read_csv("../resources/characteristics.csv")
+
+# instantiate the sqlalchemy session
+session = Session(engine)
+
+# add the data in order
+for index, row in unit_types_df.iterrows():
+    session.add(unit_types(uid = row["uid"], name = row["name"]))
+
+for index, row in gauge_types_df.iterrows():
+    session.add(gauge_types(uid = row["uid"], name = row["name"]))
+
+for index, row in characteristic_types_df.iterrows():
+    session.add(characteristic_types(uid = row["uid"], name = row["name"], is_gdt = row["is_gdt"]))
+
+for index, row in stations_df.iterrows():
+    session.add(stations(uid = row["uid"], name = row["name"]))
+
+for index, row in machines_df.iterrows():
+    session.add(machines(uid = row["uid"], pad = row["pad"], name = row["name"]))
+
+for index, row in locations_df.iterrows():
+    session.add(locations(uid = row["uid"], station_uid = row["station_uid"], machine_uid = row["machine_uid"]))
+
+for index, row in gauges_df.iterrows():
+    session.add(gauges(uid = row["uid"], location_uid = row["location_uid"], type_uid = row["type_uid"]))
+
+for index, row in parts_df.iterrows():
+    session.add(parts(drawing = row["drawing"], revision = row["revision"], item = row["item"]))
+
+for index, row in characteristics_df.iterrows():
+    session.add(characteristics(uid = row["uid"], name = row["name"], nominal = row["nominal"], usl = row["usl"], lsl = row["lsl"], part_drawing = row["part_drawing"], part_revision = row["part_revision"], part_item = row["part_item"], unit_type = row["unit_type"], type_uid = row["type_uid"], gauge_uid = row["gauge_uid"]))
+
+# commit the changes
+session.commit()
+
+# close the session
+session.close()
