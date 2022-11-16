@@ -91,7 +91,7 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
                 "gauge": gauge,
                 "gauge_type": gauge_type
             })
-            return jsonify(output)
+        return jsonify(output)
 
 # run the flask server
 if __name__ == "__main__":
