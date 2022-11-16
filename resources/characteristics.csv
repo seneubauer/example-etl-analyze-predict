@@ -1,4 +1,4 @@
-uid,name,nominal,usl,lsl,part_drawing,part_revision,part_item,unit_type,type_uid,gauge_uid
+uid,name,nominal,usl,lsl,part_drawing,part_revision,part_item,unit_type_uid,type_uid,gauge_uid
 0,dim0,1,1.05,0.95,7001122,A,9090-101,7,3,cmm-02
 1,dim1,1.5,1.6,1.4,7001122,A,9090-101,7,3,cmm-02
 2,dim2,45,46,44,7001122,A,9090-101,8,2,cmm-02

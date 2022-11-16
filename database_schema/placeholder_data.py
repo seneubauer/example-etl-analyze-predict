@@ -79,7 +79,7 @@ for index, row in parts_df.iterrows():
     session.add(parts(drawing = row["drawing"], revision = row["revision"], item = row["item"]))
 
 for index, row in characteristics_df.iterrows():
-    session.add(characteristics(uid = row["uid"], name = row["name"], nominal = row["nominal"], usl = row["usl"], lsl = row["lsl"], part_drawing = row["part_drawing"], part_revision = row["part_revision"], part_item = row["part_item"], unit_type = row["unit_type"], type_uid = row["type_uid"], gauge_uid = row["gauge_uid"]))
+    session.add(characteristics(uid = row["uid"], name = row["name"], nominal = row["nominal"], usl = row["usl"], lsl = row["lsl"], part_drawing = row["part_drawing"], part_revision = row["part_revision"], part_item = row["part_item"], unit_type_uid = row["unit_type_uid"], type_uid = row["type_uid"], gauge_uid = row["gauge_uid"]))
 
 # commit the changes
 session.commit()

@@ -69,7 +69,7 @@ class Characteristics(Base):
     part_drawing = Column(String(25), nullable = False)
     part_revision = Column(String(5), nullable = False)
     part_item = Column(String(25), nullable = False)
-    unit_type = Column(Integer, ForeignKey("unit_types.uid"), nullable = False)
+    unit_type_uid = Column(Integer, ForeignKey("unit_types.uid"), nullable = False)
     type_uid = Column(Integer, ForeignKey("characteristic_types.uid"), nullable = False)
     gauge_uid = Column(String(25), ForeignKey("gauges.uid"), nullable = False)
     __tableargs__ = (
