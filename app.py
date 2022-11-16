@@ -59,7 +59,7 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
     session = Session(engine)
 
     # query the database
-    result = session.query(*features)\
+    results = session.query(*features)\
         .join(unit_types, (characteristics.unit_type_uid == unit_types.uid))\
         .join(characteristic_types, (characteristics.type_uid == characteristic_types.uid))\
         .join(gauges, (characteristics.gauge_uid == gauges.uid))\
@@ -68,8 +68,28 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
         .filter(characteristics.part_revision == revision)\
         .filter(characteristics.part_item == item).all()
     
-    return jsonify(result)
-    # return render_template("index.html", characteristic_data = None)
+    # close the session
+    session.close()
+
+    # interpret the results
+    if results is None:
+        return { "status": "not_ok", "response": "Error within the Flask server or database query." }
+    else:
+        output = []
+        for name, nominal, usl, lsl, part_drawing, part_revision, part_item, unit_name, is_gdt, gauge, gauge_type in results:
+            output.append({
+                "name": name,
+                "usl": usl,
+                "lsl": lsl,
+                "part_drawing": part_drawing,
+                "part_revision": part_revision,
+                "part_item": part_item,
+                "unit_name": unit_name,
+                "is_gdt": is_gdt,
+                "gauge": gauge,
+                "gauge_type": gauge_type
+            })
+            return jsonify(output)
 
 # run the flask server
 if __name__ == "__main__":
