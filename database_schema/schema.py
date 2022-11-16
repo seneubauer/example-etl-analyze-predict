@@ -42,7 +42,7 @@ class Locations(Base):
     __tablename__ = "locations"
     uid = Column(Integer, nullable = False, unique = True, primary_key = True)
     station_uid = Column(Integer, ForeignKey("stations.uid"), nullable = False)
-    machine_uid = Column(Integer, ForeignKey("machines.uid"), nullable = True)
+    machine_uid = Column(Integer, ForeignKey("machines.uid"), nullable = False)
 
 class Gauges(Base):
     __tablename__ = "gauges"
@@ -83,7 +83,7 @@ class Characteristics(Base):
 from config import pg_key, pg_db, pg_host, pg_port, pg_user
 
 # create the database if it doesn't already exist
-engine = create_engine(f"postgresql://{pg_user}:{pg_key}@{pg_host}:{pg_port}/{pg_db}", echo = True)
+engine = create_engine(f"postgresql://{pg_user}:{pg_key}@{pg_host}:{pg_port}/{pg_db}", echo = False)
 if not database_exists(engine.url):
     create_database(engine.url)
 

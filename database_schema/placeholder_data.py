@@ -4,6 +4,16 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 import pandas as pd
 
+# resolve sqlalchemy/numpy issue
+import numpy
+from psycopg2.extensions import register_adapter, AsIs
+def adapt_numpy_float64(numpy_float64):
+    return AsIs(numpy_float64)
+def adapt_numpy_int64(numpy_int64):
+    return AsIs(numpy_int64)
+register_adapter(numpy.float64, adapt_numpy_float64)
+register_adapter(numpy.int64, adapt_numpy_int64)
+
 # locate config.py
 import sys
 sys.path.insert(0, "..")
@@ -12,7 +22,7 @@ sys.path.insert(0, "..")
 from config import pg_key, pg_db, pg_host, pg_port, pg_user
 
 # create the sqlalchemy engine
-engine = create_engine(f"postgresql://{pg_user}:{pg_key}@{pg_host}:{pg_port}/{pg_db}", pool_pre_ping = True, echo = True)
+engine = create_engine(f"postgresql://{pg_user}:{pg_key}@{pg_host}:{pg_port}/{pg_db}", pool_pre_ping = True, echo = False)
 
 # reflect the database
 base = automap_base()
