@@ -14,7 +14,7 @@ Base = declarative_base()
 class Unit_Types(Base):
     __tablename__ = "unit_types"
     uid = Column(Integer, nullable = False, unique = True, primary_key = True)
-    name = Column(String(10), nullable = False)
+    name = Column(String(50), nullable = False)
 
 class Gauge_Types(Base):
     __tablename__ = "gauge_types"
