@@ -17,60 +17,8 @@ function init()
     available_drawings.on("change", Get_Associated_Unique_Items)
     d3.select("#retrieve_characteristics").on("click", Get_Part_Characteristics);
 
-    d3.select("#data_requests_form").on("click", Open_Data_Requests);
-    d3.select("#data_entry_form").on("click", Open_Data_Entry);
-    d3.select("#exploratory_analysis_form").on("click", Open_Exploratory_Analysis);
-    d3.select("#model_predictions_form").on("click", Open_Model_Predictions);
-    d3.select("#model_parameters_form").on("click", Open_Model_Parameters);
-
+    // populate the unique drawings dropdown
     Get_All_Unique_Drawings();
-}
-
-/* ----- pages ----- */
-
-// open the data requests page
-function Open_Data_Requests()
-{
-    d3.json("data_requests").then(function (data)
-    {
-        console.log("Opened Data Requests");
-    });
-}
-
-// open the data entry page
-function Open_Data_Entry()
-{
-    d3.json("data_entry/").then(function (data)
-    {
-        console.log("Opened Data Entry");
-    });
-}
-
-// open the exploratory analysis page
-function Open_Exploratory_Analysis()
-{
-    d3.json("exploratory_analysis/").then(function (data)
-    {
-        console.log("Opened Exploratory Analysis");
-    });
-}
-
-// open the model predictions page
-function Open_Model_Predictions()
-{
-    d3.json("model_predictions/").then(function (data)
-    {
-        console.log("Opened Model Predictions");
-    });
-}
-
-// open the model parameters page
-function Open_Model_Parameters()
-{
-    d3.json("model_parameters/").then(function (data)
-    {
-        console.log("Opened Model Parameters");
-    });
 }
 
 /* ----- routes ----- */
@@ -100,23 +48,10 @@ function Get_Part_Characteristics()
             
             // create the cells
             rows.selectAll("td")
-                .data(x => [
-                    x.index,
-                    x.name,
-                    x.nominal,
-                    x.usl,
-                    x.lsl,
-                    x.part_drawing,
-                    x.part_revision,
-                    x.part_item,
-                    x.unit_name,
-                    x.characteristic_name,
-                    x.is_gdt,
-                    x.gauge,
-                    x.gauge_type])
-                    .enter()
-                    .append("td")
-                    .text(x => x);
+                .data(x => [x.index, x.name, x.nominal, x.usl, x.lsl, x.part_drawing, x.part_revision, x.part_item, x.unit_name, x.characteristic_name, x.is_gdt, x.gauge, x.gauge_type])
+                .enter()
+                .append("td")
+                .text(x => x);
         }
         else
         {

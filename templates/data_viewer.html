@@ -31,11 +31,29 @@
     <!-- header -->
     <nav class="navbar bg-dark px-3 py-2">
         <div class="container-fullwidth">
-            <a class="navbar-brand text-light px-2" href="#" id="data_requests_form">Data Requests</a>
-            <a class="navbar-brand text-light px-2" href="#" id="data_entry_form">Data Entry</a>
-            <a class="navbar-brand text-light px-2" href="#" id="exploratory_analysis_form">Exploratory Analysis</a>
-            <a class="navbar-brand text-light px-2" href="#" id="model_predictions_form">Model Predictions</a>
-            <a class="navbar-brand text-light px-2" href="#" id="model_parameters_form">Model Parameters</a>
+            <a class="navbar-brand text-light" href="/">Home</a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Bulk Data</button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Entry</a></li>
+                    <li><a class="dropdown-item" href="/data_viewer">Viewer</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Analysis & Visualization</button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Exploratory Analysis</a></li>
+                    <li><a class="dropdown-item" href="#">Generic Plotting</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Deep Learning</button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Supervised</a></li>
+                    <li><a class="dropdown-item" href="#">Unsupervised</a></li>
+                    <li><a class="dropdown-item" href="#">Neural Networks</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 

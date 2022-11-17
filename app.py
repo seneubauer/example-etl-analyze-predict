@@ -33,29 +33,13 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
 # data requests
 @app.route("/")
-# @app.route("/data_requests/")
-def Open_Data_Requests():
-    return render_template("data_requests.html")
+def IndexRoute():
+    return render_template("index.html")
 
 # data entry
-@app.route("/data_entry")
+@app.route("/data_viewer")
 def Open_Data_Entry():
-    return render_template("data_entry.html")
-
-# exploratory analysis
-@app.route("/exploratory_analysis")
-def Open_Exploratory_Analysis():
-    return render_template("exploratory_analysis.html")
-
-# model predictions
-@app.route("/model_predictions")
-def Open_Model_Predictions():
-    return render_template("model_predictions.html")
-
-# model predictions
-@app.route("/model_parameters")
-def Open_Model_Parameters():
-    return render_template("model_parameters.html")
+    return render_template("data_viewer.html")
 
 # request list of all unique drawings
 @app.route("/get_all_unique_drawings/")
