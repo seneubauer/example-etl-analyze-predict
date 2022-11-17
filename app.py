@@ -171,7 +171,9 @@ def Get_Characteristics(drawing:str, revision:str, item:str):
                 "gauge_type": gauge_type
             })
             i += 1
-        return render_template("index.html", characteristic_data = output)
+        
+        # return the output
+        return { "status": "ok", "response": output }
 
 # run the flask server
 if __name__ == "__main__":

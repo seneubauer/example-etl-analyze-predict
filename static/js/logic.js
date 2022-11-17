@@ -1,6 +1,7 @@
 /* ----- global declarations ----- */
 
 // html elements
+let characteristic_table = d3.select("#characteristic_table");
 let available_drawings = d3.select("#available_drawings");
 let associated_revisions = d3.select("#associated_revisions");
 let associated_items = d3.select("#associated_items");
@@ -14,6 +15,7 @@ function init()
     // assign events
     available_drawings.on("change", Get_Associated_Unique_Revisions)
     available_drawings.on("change", Get_Associated_Unique_Items)
+    d3.select("#retrieve_characteristics").on("click", Get_Part_Characteristics);
 
     Get_All_Unique_Drawings();
 }
@@ -31,7 +33,42 @@ function Get_Part_Characteristics()
     // call the flask server
     d3.json(`get_characteristics/${drawing}/${revision}/${item}/`).then(function (data)
     {
-        
+        if (data.status == "ok")
+        {
+            // create the table body
+            let tbody = characteristic_table.select("tbody")
+
+            // create the table rows
+            tbody.selectAll("tr").remove();
+            let rows = tbody.selectAll("tr")
+                .data(data.response)
+                .enter()
+                .append("tr");
+            
+            // create the cells
+            rows.selectAll("td")
+                .data(x => [
+                    x.index,
+                    x.name,
+                    x.nominal,
+                    x.usl,
+                    x.lsl,
+                    x.part_drawing,
+                    x.part_revision,
+                    x.part_item,
+                    x.unit_name,
+                    x.characteristic_name,
+                    x.is_gdt,
+                    x.gauge,
+                    x.gauge_type])
+                    .enter()
+                    .append("td")
+                    .text(x => x);
+        }
+        else
+        {
+            console.log(data.response);
+        }
     });
 }
 
@@ -43,7 +80,12 @@ function Get_All_Unique_Drawings()
     {
         if (data.status == "ok")
         {
-            available_drawings.selectAll("option").data(data.response).enter().append("option").text(x => x).attr("value", x => x);
+            available_drawings.selectAll("option")
+                .data(data.response)
+                .enter()
+                .append("option")
+                .text(x => x)
+                .attr("value", x => x);
         }
         else
         {
@@ -67,7 +109,12 @@ function Get_Associated_Unique_Revisions()
         if (data.status == "ok")
         {
             associated_revisions.selectAll("option").remove();
-            associated_revisions.selectAll("option").data(data.response).enter().append("option").text(x => x).attr("value", x => x);
+            associated_revisions.selectAll("option")
+                .data(data.response)
+                .enter()
+                .append("option")
+                .text(x => x)
+                .attr("value", x => x);
         }
         else
         {
@@ -88,7 +135,12 @@ function Get_Associated_Unique_Items()
         if (data.status == "ok")
         {
             associated_items.selectAll("option").remove();
-            associated_items.selectAll("option").data(data.response).enter().append("option").text(x => x).attr("value", x => x);
+            associated_items.selectAll("option")
+                .data(data.response)
+                .enter()
+                .append("option")
+                .text(x => x)
+                .attr("value", x => x);
         }
         else
         {

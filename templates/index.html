@@ -36,20 +36,21 @@
     </nav>
 
     <!-- body -->
-    <div class="container my-3">
-        <div class="row">
+    <div class="container my-2">
+        <div class="row my-2">
             <div class="col-md-12">
                 <h4>Selection Parameters</h4>
                 <div class="d-flex flex-row">
                     <select class="form-select mx-2" id="available_drawings"></select>
                     <select class="form-select mx-2" id="associated_revisions"></select>
                     <select class="form-select mx-2" id="associated_items"></select>
+                    <button type="button" id="retrieve_characteristics" class="btn btn-dark mx-2">Retrieve</button>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row my-2">
             <div class="col-md-12">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="characteristic_table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -67,25 +68,7 @@
                             <th scope="col">Gauge Type</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for item in characteristic_data %}
-                        <tr>
-                            <th scope="row">{{ item.index }}</th>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.nominal }}</td>
-                            <td>{{ item.usl }}</td>
-                            <td>{{ item.lsl }}</td>
-                            <td>{{ item.part_drawing }}</td>
-                            <td>{{ item.part_revision }}</td>
-                            <td>{{ item.part_item }}</td>
-                            <td>{{ item.unit_name }}</td>
-                            <td>{{ item.characteristic_name }}</td>
-                            <td>{{ item.is_gdt }}</td>
-                            <td>{{ item.gauge }}</td>
-                            <td>{{ item.gauge_type }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
