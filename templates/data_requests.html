@@ -29,9 +29,13 @@
 <body>
 
     <!-- header -->
-    <nav class="navbar bg-dark px-5">
+    <nav class="navbar bg-dark px-3 py-2">
         <div class="container-fullwidth">
-            <a class="navbar-brand text-light" href="/templates/index.html">Home</a>
+            <a class="navbar-brand text-light px-2" href="#" id="data_requests_form">Data Requests</a>
+            <a class="navbar-brand text-light px-2" href="#" id="data_entry_form">Data Entry</a>
+            <a class="navbar-brand text-light px-2" href="#" id="exploratory_analysis_form">Exploratory Analysis</a>
+            <a class="navbar-brand text-light px-2" href="#" id="model_predictions_form">Model Predictions</a>
+            <a class="navbar-brand text-light px-2" href="#" id="model_parameters_form">Model Parameters</a>
         </div>
     </nav>
 
@@ -39,7 +43,7 @@
     <div class="container my-2">
         <div class="row my-2">
             <div class="col-md-12">
-                <h4>Selection Parameters</h4>
+                <h6>Selection Parameters</h6>
                 <div class="d-flex flex-row">
                     <select class="form-select mx-2" id="available_drawings"></select>
                     <select class="form-select mx-2" id="associated_revisions"></select>
@@ -63,7 +67,7 @@
                             <th scope="col">Item</th>
                             <th scope="col">Units</th>
                             <th scope="col">Characteristic</th>
-                            <th scope="col">Is GD&T</th>
+                            <th scope="col">Is GDT</th>
                             <th scope="col">Gauge</th>
                             <th scope="col">Gauge Type</th>
                         </tr>

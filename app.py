@@ -31,10 +31,31 @@ characteristics = base.classes.characteristics
 app = Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
-# landing page
+# data requests
 @app.route("/")
-def IndexRoute():
-    return render_template("index.html")
+# @app.route("/data_requests/")
+def Open_Data_Requests():
+    return render_template("data_requests.html")
+
+# data entry
+@app.route("/data_entry")
+def Open_Data_Entry():
+    return render_template("data_entry.html")
+
+# exploratory analysis
+@app.route("/exploratory_analysis")
+def Open_Exploratory_Analysis():
+    return render_template("exploratory_analysis.html")
+
+# model predictions
+@app.route("/model_predictions")
+def Open_Model_Predictions():
+    return render_template("model_predictions.html")
+
+# model predictions
+@app.route("/model_parameters")
+def Open_Model_Parameters():
+    return render_template("model_parameters.html")
 
 # request list of all unique drawings
 @app.route("/get_all_unique_drawings/")
@@ -62,7 +83,7 @@ def Get_All_Unique_Drawings():
         return { "status": "ok", "response": output }
 
 # request list of associated unique revisions
-@app.route("/get_associated_unique_revisions/<drawing>/")
+@app.route("/get_associated_unique_revisions/<drawing>/", methods = ["GET"])
 def Get_Associated_Unique_Revisions(drawing:str):
 
     # start the database session
@@ -88,7 +109,7 @@ def Get_Associated_Unique_Revisions(drawing:str):
         return { "status": "ok", "response": output }
 
 # request list of associated unique items
-@app.route("/get_associated_unique_items/<drawing>/")
+@app.route("/get_associated_unique_items/<drawing>/", methods = ["GET"])
 def Get_Associated_Unique_Items(drawing:str):
 
     # start the database session
@@ -114,7 +135,7 @@ def Get_Associated_Unique_Items(drawing:str):
         return { "status": "ok", "response": output }
 
 # request characteristics for drawing/revision/item
-@app.route("/get_characteristics/<drawing>/<revision>/<item>/")
+@app.route("/get_characteristics/<drawing>/<revision>/<item>/", methods = ["GET"])
 def Get_Characteristics(drawing:str, revision:str, item:str):
 
     # define the return features
