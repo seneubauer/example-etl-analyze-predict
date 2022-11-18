@@ -29,33 +29,50 @@
 <body>
 
     <!-- header -->
-    <nav class="navbar bg-dark px-3 py-2">
-        <div class="container-fullwidth">
-            <a class="navbar-brand text-light" href="/">Home</a>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Bulk Data</button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="#">Entry</a></li>
-                    <li><a class="dropdown-item" href="/data_viewer">Viewer</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Analysis & Visualization</button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="#">Exploratory Analysis</a></li>
-                    <li><a class="dropdown-item" href="#">Generic Plotting</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Deep Learning</button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="#">Supervised</a></li>
-                    <li><a class="dropdown-item" href="#">Unsupervised</a></li>
-                    <li><a class="dropdown-item" href="#">Neural Networks</a></li>
-                </ul>
-            </div>
+    <div class="container-fullwidth">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Home</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Bulk Data
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="/">Entry</a></li>
+                                    <li><a class="dropdown-item" href="/data_viewer">Viewer</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Analysis & Visualization
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="/">Exploratory Analysis</a></li>
+                                    <li><a class="dropdown-item" href="/">Generic Plotting</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Deep Learning
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="/">Supervised</a></li>
+                                    <li><a class="dropdown-item" href="/">Unsupervised</a></li>
+                                    <li><a class="dropdown-item" href="/">Neural Networks</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </div>
 
     <!-- body -->
     <div class="container my-2">
